@@ -474,11 +474,7 @@ status_t ACodec::allocateBuffersOnPort(OMX_U32 portIndex) {
 
     status_t err;
     if (mNativeWindow != NULL && portIndex == kPortIndexOutput) {
-        if (mStoreMetaDataInOutputBuffers) {
-            err = allocateOutputMetaDataBuffers();
-        } else {
-            err = allocateOutputBuffersFromNativeWindow();
-        }
+	err = allocateOutputBuffersFromNativeWindow();
     } else {
         OMX_PARAM_PORTDEFINITIONTYPE def;
         InitOMXParams(&def);
